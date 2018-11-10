@@ -1,0 +1,37 @@
+{
+  "name": "hacksussex18",
+  "version": "1.0.0",
+  "description": "StickerApp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "start": "node .",
+    "posttest": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-vorontsov/hacksussex18.git"
+  },
+  "author": "Aleksandr Vorontsov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a-vorontsov/hacksussex18/issues"
+  },
+  "homepage": "https://github.com/a-vorontsov/hacksussex18#readme",
+  "dependencies": {
+    "loopback-cli": "^4.2.1",
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "helmet": "^3.10.0",
+    "loopback-boot": "^2.6.5",
+    "serve-favicon": "^2.0.1",
+    "strong-error-handler": "^3.0.0",
+    "loopback-component-explorer": "^6.2.0",
+    "loopback": "^3.22.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.17.1",
+    "eslint-config-loopback": "^8.0.0"
+  }
+}

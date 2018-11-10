@@ -1,0 +1,33 @@
+{
+  "name": "sticker",
+  "plural": "stickers",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "tags": {
+      "type": [
+        "string"
+      ]
+    },
+    "image": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
