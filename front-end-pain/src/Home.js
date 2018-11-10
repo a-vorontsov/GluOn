@@ -20,18 +20,12 @@ export default class Index extends Component {
     )
   }
 }
-
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header id="App-header">
           <div className="App-Logo">
-            
-          </div>
-
-          <div id="App-Name">
-            
             <p>
               <img src={logo} className="App-logo" alt="logo" />
               Edit <code>src/App.js</code> and save to reload.
@@ -40,7 +34,8 @@ class App extends Component {
         </header>
         {/*Register button */}
         <div id="registerButton">
-          <button onClick={() => this.goToRegisterPage()}>Register
+          <button onClick={() => this.goToRegisterPage()}>
+            Register
           </button>
         </div>
       </div>

@@ -8,20 +8,15 @@ export default class RegistrationPage extends Component {
       <div className="App">
         <header id="App-header">
           <div className="App-Logo">
-            
-          </div>
-
-          <div id="App-Name">
-            
             <p>
               <img src={logo} className="App-logo" alt="logo" />
             </p>
           </div>
         </header>
-
         {/*Home button */}
         <div id="HomeButton">
-          <button onClick={() => this.goToHomePage()}>Home
+          <button onClick={() => this.goToHomePage()}>
+            Home
           </button>
         </div>
       </div>
