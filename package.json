@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/a-vorontsov/hacksussex18/issues"
   },
-  "homepage": "https://github.com/a-vorontsov/hacksussex18#readme"
+  "homepage": "https://github.com/a-vorontsov/hacksussex18#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "http-server": "^0.11.1"
+  }
 }
