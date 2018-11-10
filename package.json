@@ -1,0 +1,19 @@
+{
+  "name": "hacksussex18",
+  "version": "1.0.0",
+  "description": "- Search - interactive map (optional) - Search where to find stickers and how to get them - Two different user types: student/hacker, staff/org",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-vorontsov/hacksussex18.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a-vorontsov/hacksussex18/issues"
+  },
+  "homepage": "https://github.com/a-vorontsov/hacksussex18#readme"
+}
