@@ -57,6 +57,13 @@ code {
   }
 }
 
+.square-image {
+  padding-top: 100%;
+}
+
+.sticker-image {
+  max-width: 200px;
+}
 
 .container {
   padding: 50px;

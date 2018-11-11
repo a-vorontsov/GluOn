@@ -20,10 +20,17 @@ export default class StickerList extends React.Component {
     const response = JSON.parse(res.text);
     this.setState({stickerList: response});
   }
-  handleChange(event) {
+  async handleChange(event) {
     event.preventDefault();
-    const field = event.target.name;
-    this.setState({[field]: event.target.value});
+    this.setState({searchTerm: event.target.value});
+    const req = request
+      .get('http://localhost:5000/api/search-stickers')
+      .set("Accept", "application/json")
+      .set("Content-type", "application/json")
+      .query({term: event.target.value});
+    const res = await req;
+    const response = JSON.parse(res.text);
+    await this.setState({stickerList: response});
   }
   render() {
     return (
@@ -46,7 +53,7 @@ export default class StickerList extends React.Component {
                         <tr key={key}>
                           <td>{sticker.name}</td>
                           <td>{sticker.organiser}</td>
-                          <td>{sticker.image}</td>
+                          <td><img className="square-image sticker-image" src={sticker.image} alt="Sticker"/></td>
                         </tr>
                       );
                     })
