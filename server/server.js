@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/api/put-sticker', (req, res) => {
   const input = req.body;
-  stickerTable.addObjects(input, (err, content) => {
+  stickerTable.addObjects([input], (err, content) => {
     if (err) {
       console.log(err);
     }
@@ -45,6 +45,24 @@ app.post('/api/put-user', (req, res) => {
     }
   });
   res.status(200).send('OK');
+});
+
+app.post('/api/login', async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  var found = false;
+  await userTable.search({query: email}).then(res => {
+    console.log("asdf");
+    found = res.hits.some(h => {
+      return h.password === password;
+    });
+  });
+  console.log(found);
+  if (found) {
+    res.status(200).send("found");
+  } else {
+    res.status(404).send('not found');
+  }
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

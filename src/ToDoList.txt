@@ -18,6 +18,8 @@ STICKER COMPILATION
 					-display sticker image, name, organizer, name tags format left to right
 			-LOGOUT BUTTON
 				-redirects to home page
+
+
 ADD STICKER
 	Available after logging in
 		-View current stickers of list in rows format
