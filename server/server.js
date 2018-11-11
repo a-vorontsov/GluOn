@@ -5,6 +5,7 @@ const port = process.env.PORT || 5000;
 const algoliasearch = require('algoliasearch');
 const client = algoliasearch(process.env.ALGOLIA_ID, process.env.ALGOLIA_SECRET);
 const stickerTable = client.initIndex('sticker');
+const userTable = client.initIndex('user');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -60,8 +61,16 @@ app.get('/api/search-stickers', (req, res) => {
       res.send(content.hits);
     }
   });
-  
+});
 
+app.post('/api/put-user', (req, res) => {
+  const input = req.body;
+  userTable.addObjects(input, (err, content) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+  res.status(200).send('OK');
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
