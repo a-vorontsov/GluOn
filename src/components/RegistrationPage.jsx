@@ -7,16 +7,9 @@ export default class RegistrationPage extends Component {
   render() {
     return (
       <div className="App">
-        <header id="App-header">
-          <div className="App-Logo">
-            <p>
-              <img src={logo} className="App-logo" alt="logo" />
-              Placeholder for GluOn Image
-            </p>
-          </div>
-        </header>
+ 
         <RegistrationForm />
-        <div id="HomeButton">
+        <div className="button">
           <NavLink to="/">
             Home
           </NavLink>
@@ -66,29 +59,29 @@ class RegistrationForm extends React.Component {
     return(
       <div>
         <h2>Create your account</h2>
-        <form>
+        <form className="information">
           <label>
-            Organization Name:
+            Organization Name: 
             <input name="orgname" type="text" value={this.state.orgname} onChange={(value) => this.handleChange(value)} />
           </label>
           <br />
           <label>
-            Email Address:
+            Email Address: 
             <input name="email" type="email" value={this.state.email} onChange={(value) => this.handleChange(value)} />
           </label>
           <br />
           <label>
-            Password:
+            Password: 
             <input name="password1" type="password" value={this.state.password1} onChange={(value) => this.handleChange(value)} />
           </label>
           <br />
           <label>
-            Confirm Password:
+            Confirm Password: 
             <input name="password2" type="password" value={this.state.password2} onChange={(value) => this.handleChange(value)} />
           </label>
           <br />
         </form>
-        <button onClick={() => this.handleSubmit()}>Submit</button>
+        <button className="buttonStyle" onClick={() => this.handleSubmit()}>Submit</button>
       </div>
     );
   }

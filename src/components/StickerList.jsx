@@ -63,7 +63,11 @@ export default class StickerList extends React.Component {
             </div>
           : <div>There are no stickers</div>
         }
-        <NavLink to="/">Home</NavLink>
+      <div className="button">
+          <NavLink to="/">
+            Home
+          </NavLink> 
+        </div>     
       </div>
     );
   }
