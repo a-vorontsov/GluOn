@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './Home.css';
-import { Router, Route, IndexRoute } from 'react-router'
+import { Router, Route } from 'react-router'
 import RegistrationPage from './components/RegistrationPage';
+import StickerList from './components/StickerList';
 import createBrowserHistory from "history/createBrowserHistory";
 const customHistory = createBrowserHistory();
 
@@ -11,15 +12,15 @@ export default class Index extends Component {
     return (
       <Router history={customHistory}>
         <div>
-          { /*Reference index page*/ }
           <Route exact path='/' component={App} />
-          { /*Adds register page to the routes available*/ }
-          <Route path='/Register' component={RegistrationPage} />
+          <Route path='/register' component={RegistrationPage} />
+          <Route path='/stickers' component={StickerList} />
         </div>
       </Router>
     )
   }
 }
+
 class App extends Component {
   render() {
     return (
@@ -32,7 +33,6 @@ class App extends Component {
             </p>
           </div>
         </header>
-        {/*Register button */}
         <div id="registerButton">
           <button onClick={() => this.goToRegisterPage()}>
             Register
@@ -42,6 +42,6 @@ class App extends Component {
     );
   }
   goToRegisterPage() {
-    window.location.assign('/Register');
+    window.location.assign('/register');
   }
 }

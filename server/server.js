@@ -9,6 +9,10 @@ const userTable = client.initIndex('user');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(function(req, res) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+});
 
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
@@ -21,26 +25,6 @@ app.post('/api/world', (req, res) => {
     `I received your POST request. This is what you sent me: ${req.body.post}`,
   );
 });
-
-// const objects = [{
-//   name: 'love heart',
-//   tags: ['pink', 'heart', 'stars', 'sparkles'],
-//   organiser: 'Joe Nash'
-// }];
-
-// stickerTable.addObjects(objects, function(err, content) {
-//   console.log(content);
-// });
-
-// stickerTable.search({
-//   query: 'green',
-// }, ((err, content) => {
-//   if (err) {
-//     console.error(error);
-//   } else {
-//     console.log(content.hits);
-//   }
-// }));
 
 app.post('/api/put-sticker', (req, res) => {
   const input = req.body;
