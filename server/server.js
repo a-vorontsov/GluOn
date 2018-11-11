@@ -9,22 +9,6 @@ const userTable = client.initIndex('user');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(function(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-});
-
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-
-app.post('/api/world', (req, res) => {
-  const input = req.body;
-  console.log(input);
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
-  );
-});
 
 app.post('/api/put-sticker', (req, res) => {
   const input = req.body;
@@ -37,12 +21,16 @@ app.post('/api/put-sticker', (req, res) => {
 });
 
 app.get('/api/search-stickers', (req, res) => {
-  const searchTerm = req.body.term;
+  const searchTerm = req.query.term;
   stickerTable.search({query: searchTerm}, (err, content) =>{
     if (err) {
       console.log(err);
     } else {
-      res.send(content.hits);
+      const formattedResponse = [];
+      content.hits.forEach(h => {
+        formattedResponse.push({name: h.name, organiser: h.organiser});
+      });
+      res.send(formattedResponse);
     }
   });
 });
