@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import logo from '../logo.svg';
-import '../Home.css';
+const request = require('superagent');
 
 export default class RegistrationPage extends Component {
-  
   render() {
     return (
       <div className="App">
@@ -17,65 +17,78 @@ export default class RegistrationPage extends Component {
         </header>
         <RegistrationForm />
         <div id="HomeButton">
-          <button onClick={() => this.goToHomePage()}>
+          <NavLink to="/">
             Home
-          </button>
+          </NavLink>
         </div>
       </div>
     );
-  }
-  goToHomePage() {
-  	window.location.assign('../');
   }
 }
 
 class RegistrationForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
-
+    this.state = {
+      orgname: "",
+      email: "",
+      password1: "",
+      password2: ""
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
+    event.preventDefault();
     const name = event.target.name;
     this.setState({[name]: event.target.value});
   }
 
-  handleSubmit(event) {
-    alert('Name submitted: ' + this.state.value);
-    event.preventDefault();
-    console.log(this.state);
+  async handleSubmit() {
+    const {password1, password2, orgname, email} = this.state;
+    if (password2 === password1) {
+      try {
+        const req = request
+          .post('http://localhost:5000/api/put-user')
+          .set("Accept", "application/json")
+          .set("Content-type", "application/json");
+        await req.send({name: orgname, email, password: password1});
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      alert("There was an error submitting your form, please check your password and whatnot");
+    }
   }
 
   render() {
     return(
       <div>
         <h2>Create your account</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <label>
             Organization Name:
-            <input name="orgname" type="text" value={this.state.value} onChange={this.handleChange} />
+            <input name="orgname" type="text" value={this.state.orgname} onChange={(value) => this.handleChange(value)} />
           </label>
           <br />
           <label>
             Email Address:
-            <input name="email" type="text" value={this.state.value} onChange={this.handleChange} />
+            <input name="email" type="email" value={this.state.email} onChange={(value) => this.handleChange(value)} />
           </label>
           <br />
           <label>
             Password:
-            <input name="password1" type="text" value={this.state.value} onChange={this.handleChange} />
+            <input name="password1" type="password" value={this.state.password1} onChange={(value) => this.handleChange(value)} />
           </label>
           <br />
           <label>
             Confirm Password:
-            <input name="password2" type="text" value={this.state.value} onChange={this.handleChange} />
+            <input name="password2" type="password" value={this.state.password2} onChange={(value) => this.handleChange(value)} />
           </label>
           <br />
-          <input type="submit" value="Submit" />
         </form>
+        <button onClick={() => this.handleSubmit()}>Submit</button>
       </div>
     );
   }

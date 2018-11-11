@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './Home.css';
-import { Router, Route } from 'react-router'
+import { Router, Route, Switch, NavLink } from 'react-router-dom';
 import RegistrationPage from './components/RegistrationPage';
 import StickerList from './components/StickerList';
 import createBrowserHistory from "history/createBrowserHistory";
@@ -11,10 +10,12 @@ export default class Index extends Component {
   render() {
     return (
       <Router history={customHistory}>
-        <div>
-          <Route exact path='/' component={App} />
-          <Route path='/register' component={RegistrationPage} />
-          <Route path='/stickers' component={StickerList} />
+        <div className="container">
+          <Switch>
+            <Route path='/register' component={RegistrationPage} />
+            <Route path='/stickers' component={StickerList} />
+            <Route path='/' component={App} />
+          </Switch>
         </div>
       </Router>
     )
@@ -22,6 +23,12 @@ export default class Index extends Component {
 }
 
 class App extends Component {
+  goToRegisterPage() {
+    window.location.assign('/register');
+  }
+  goToStickerPage() {
+    window.location.assign('/stickers');
+  }
   render() {
     return (
       <div className="App">
@@ -34,14 +41,16 @@ class App extends Component {
           </div>
         </header>
         <div id="registerButton">
-          <button onClick={() => this.goToRegisterPage()}>
+          <NavLink to="/register">
             Register
-          </button>
+          </NavLink>
+        </div>
+        <div id="registerButton">
+          <NavLink to="/stickers">
+            Stickers
+          </NavLink>
         </div>
       </div>
     );
-  }
-  goToRegisterPage() {
-    window.location.assign('/register');
   }
 }
