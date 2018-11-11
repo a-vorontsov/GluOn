@@ -1,0 +1,29 @@
+TO DO LIST:
+
+LOGIN:
+	-POP UP
+		-FORM
+			-Username/Email/Organization name
+			-Password
+			-Submit button
+
+STICKER COMPILATION
+	-Button on home to direct to Sticker page
+		-CREATE NEW PAGE for stickers compilation
+			-table div thing 
+				-Querying API Chameleon 
+					-search by sticker name tags
+					-search by organizer
+				-Display all records
+					-display sticker image, name, organizer, name tags format left to right
+			-LOGOUT BUTTON
+				-redirects to home page
+ADD STICKER
+	Available after logging in
+		-View current stickers of list in rows format
+			-allow those to be deleted by a simple click
+		-ADD Sticker (BUTTON)
+			-FORM POPUP
+				-fields: Sticker name, image, name tags
+				-submit BUTTON
+

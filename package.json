@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js"
+    "dev:server": "node server/server.js",
+    "dev:client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
@@ -29,12 +33,6 @@
     "react-router": "^4.3.1",
     "react-scripts": "2.1.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -43,5 +41,11 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a-vorontsov/hacksussex18/issues"
+  },
+  "homepage": "https://github.com/a-vorontsov/hacksussex18#readme"
 }

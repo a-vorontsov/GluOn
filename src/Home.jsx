@@ -12,7 +12,7 @@ export default class Index extends Component {
       <Router history={customHistory}>
         <div>
           { /*Reference index page*/ }
-          <Route path='/' component={App} />
+          <Route exact path='/' component={App} />
           { /*Adds register page to the routes available*/ }
           <Route path='/Register' component={RegistrationPage} />
         </div>
@@ -28,7 +28,7 @@ class App extends Component {
           <div className="App-Logo">
             <p>
               <img src={logo} className="App-logo" alt="logo" />
-              Edit <code>src/App.js</code> and save to reload.
+              Placeholder for GluOn Image
             </p>
           </div>
         </header>
