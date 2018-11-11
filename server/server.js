@@ -51,4 +51,17 @@ app.post('/api/put-sticker', (req, res) => {
   res.status(200).send('OK');
 });
 
+app.get('/api/search-stickers', (req, res) => {
+  const searchTerm = req.body.term;
+  stickerTable.search({query: searchTerm}, (err, content) =>{
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(content.hits);
+    }
+  });
+  
+
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
