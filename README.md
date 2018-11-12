@@ -1,54 +1,13 @@
-# HackSussex 2018
-### Specs:
-- Search
-- interactive map (optional)
-- Search where to find stickers and how to get them
-- Two different user types: student/hacker, staff/org
+# GluOn
 
+GluOn is a website that allows hackathon attendees to be able to see which stickers are available for a hackathon and which organisers/sponsors have said stickers.
 
-### Users:
-- Student:
-  - Search for stickers
-  - Get location (optional) 
-  - Instuctions on how to get them
-- Staff:
-  - Upload sticker image
-  - Add sticker description
-  - Add instructions
-  - Add location (optional)
-  - Org name
+Sponsors can sign up, log in and upload sticker information for attendees to see.
 
-### TODO:
-- set up DB
-- set up API
-- design UI
-- get domain
-- set up server
-- set up 
+Front-end: React
+Back-end: Node.JS
+APIs: Algolia
 
-### Sticker table columns:
-- id
-- name
-- desc
-- location
-- image
-- tags
-- organiser (FK: user.id)
+---
 
-### Users table:
-- id
-- name
-- email
-- password
-- type
-- image
-
-### Searches:
-- stickers
-- sticker tags
-- what orgs have what stickers
-
-
-### Delegations:
-- Front-end: Eden + Jeanne
-- Back-end: Sasha, Victor, Aramdokht
+This project was made as part of HackSussex 2018. Code written is this project is not representative of code written in a professional environment.
