@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 5000;
 const algoliasearch = require('algoliasearch');
@@ -7,44 +8,13 @@ const client = algoliasearch(process.env.ALGOLIA_ID, process.env.ALGOLIA_SECRET)
 const stickerTable = client.initIndex('sticker');
 const userTable = client.initIndex('user');
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-
-app.post('/api/world', (req, res) => {
-  const input = req.body;
-  console.log(input);
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
-  );
-});
-
-// const objects = [{
-//   name: 'love heart',
-//   tags: ['pink', 'heart', 'stars', 'sparkles'],
-//   organiser: 'Joe Nash'
-// }];
-
-// stickerTable.addObjects(objects, function(err, content) {
-//   console.log(content);
-// });
-
-// stickerTable.search({
-//   query: 'green',
-// }, ((err, content) => {
-//   if (err) {
-//     console.error(error);
-//   } else {
-//     console.log(content.hits);
-//   }
-// }));
-
 app.post('/api/put-sticker', (req, res) => {
   const input = req.body;
-  stickerTable.addObjects(input, (err, content) => {
+  stickerTable.addObjects([input], (err, content) => {
     if (err) {
       console.log(err);
     }
@@ -53,24 +23,46 @@ app.post('/api/put-sticker', (req, res) => {
 });
 
 app.get('/api/search-stickers', (req, res) => {
-  const searchTerm = req.body.term;
+  const searchTerm = req.query.term;
   stickerTable.search({query: searchTerm}, (err, content) =>{
     if (err) {
       console.log(err);
     } else {
-      res.send(content.hits);
+      const formattedResponse = [];
+      content.hits.forEach(h => {
+        formattedResponse.push({name: h.name, organiser: h.organiser,  image: h.image});
+      });
+      res.send(formattedResponse);
     }
   });
 });
 
 app.post('/api/put-user', (req, res) => {
   const input = req.body;
-  userTable.addObjects(input, (err, content) => {
+  userTable.addObjects([input], (err, content) => {
     if (err) {
       console.log(err);
     }
   });
   res.status(200).send('OK');
+});
+
+app.post('/api/login', async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  var found = false;
+  await userTable.search({query: email}).then(res => {
+    console.log("asdf");
+    found = res.hits.some(h => {
+      return h.password === password;
+    });
+  });
+  console.log(found);
+  if (found) {
+    res.status(200).send("found");
+  } else {
+    res.status(404).send('not found');
+  }
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

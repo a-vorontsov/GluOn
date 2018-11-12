@@ -1,11 +1,14 @@
 {
-  "name": "hacksussex18",
+  "name": "GluOn",
   "version": "1.0.0",
-  "description": "- Search - interactive map (optional) - Search where to find stickers and how to get them - Two different user types: student/hacker, staff/org",
+  "description": "Website to allow hackers to search stickers and for organisers to upload stickers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js"
+    "test": "react-scripts test",
+    "dev:server": "supervisor -n error -w server -e 'json,js' server/server.js",
+    "dev:client": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
@@ -20,7 +23,26 @@
   "dependencies": {
     "algoliasearch": "^3.30.0",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dependencies": "0.0.1",
     "express": "^4.16.4",
-    "http-server": "^0.11.1"
-  }
+    "http-server": "^0.11.1",
+    "peer": "^0.2.10",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "superagent": "^4.0.0-beta.5",
+    "supervisor": "^0.12.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
