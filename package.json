@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/a-vorontsov/hacksussex18.git"
+    "url": "git+https://github.com/a-vorontsov/gluon.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/a-vorontsov/hacksussex18/issues"
+    "url": "https://github.com/a-vorontsov/gluon/issues"
   },
-  "homepage": "https://github.com/a-vorontsov/hacksussex18#readme",
+  "homepage": "https://github.com/a-vorontsov/gluon#readme",
   "dependencies": {
     "algoliasearch": "^3.30.0",
     "body-parser": "^1.18.3",
