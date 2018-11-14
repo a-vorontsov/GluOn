@@ -1,21 +1,12 @@
 //Add sticker
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../logo.svg';
 const request = require('superagent');
 
 export default class AddStickerPage extends Component {
   render() {
     return (
       <div className="App">
-        <header id="App-header">
-          <div className="App-Logo">
-            <p>
-              <img src={logo} className="App-logo" alt="logo" />
-              Placeholder for GluOn Image
-            </p>
-          </div>
-        </header>
         <AddStickerForm />
         <div id="AddButton">
           <NavLink to="/">
