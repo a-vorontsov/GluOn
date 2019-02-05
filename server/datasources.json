@@ -1,0 +1,13 @@
+{
+  "memory": {
+    "name": "memory",
+    "connector": "memory"
+  },
+  "postgresql": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "gluon",
+    "name": "postgresql",
+    "connector": "postgresql"
+  }
+}

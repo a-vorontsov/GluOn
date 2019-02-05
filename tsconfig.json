@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "es5",
+      "noImplicitAny": false,
+      "sourceMap": false,
+      "outDir": "dist",
+      "jsx": "react",
+      "allowJs": true,
+      "moduleResolution": "node",
+      "lib": [
+        "dom",
+        "es2017"
+      ]
+    },
+    "include": [
+        "src/index.tsx"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }

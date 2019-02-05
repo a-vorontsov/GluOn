@@ -1,0 +1,45 @@
+{
+  "name": "user",
+  "plural": "users",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "postgresql": {
+        "columnName": "first_name"
+      }
+    },
+    "lastName": {
+      "type": "string",
+      "required": true,
+      "postgresql": {
+        "columnName": "last_name"
+      }
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "organisation": {
+      "type": "belongsTo",
+      "model": "organisation",
+      "foreignKey": ""
+    },
+    "stickers": {
+      "type": "hasMany",
+      "model": "sticker",
+      "foreignKey": "",
+      "through": "organisation"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
